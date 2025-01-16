@@ -1,14 +1,48 @@
 # ViT
-ViT model tested on final project datasets
+Two ViT models tested on melanoma, facial skin diseases and hair diseases datasets.
 
-## Results on different datasets
+To use from the scratch models, simply run
 
-### Skin Cancer dataset
-![Skin Cancer](conf_matrices/skin_cancer_conf.png)
+```python
+from tensorflow.keras.models import load_model
 
-### Hair Diseases dataset
-![Hair Diseases](conf_matrices/hair_diseases_conf.png)
+# Load the model
+loaded_model = load_model("path_to_saved_model") # for .keras models
+```
 
-### Facial Skin Diseases dataset
-![Facial Diseases](conf_matrices/facial_skin_diseases_conf.png)
+To use pretrained models, run 
+
+```python
+model = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224', num_labels=len(classes))
+# len(classes) is equal to 2 for melanoma, 5 for facial skin diseases, 10 for hair diseases.
+
+model.load_state_dict(torch.load('model.pth')) # for .pth models
+model.eval()  # Set the model to evaluation mode
+```
+
+
+## From the scratch models' results on different datasets
+
+### Skin Cancer dataset (0.87 acc)
+![Skin Cancer](conf_matrices/scratch_skin_cancer.png)
+
+### Facial Skin Diseases dataset (0.28 acc)
+![Facial Diseases](conf_matrices/scratch_facial_skin_diseases.png)
+
+### Hair Diseases dataset (0.97 acc)
+![Hair Diseases](conf_matrices/scratch_hair_diseases.png)
+
+
+
+## Pre-trained models' results on different datasets
+
+### Skin Cancer dataset (0.93 acc)
+![Skin Cancer](conf_matrices/pretrained_skin_cancer.png)
+
+### Facial Skin Diseases dataset (0.90 acc)
+![Facial Diseases](conf_matrices/pretrained_facial_skin_diseases.png)
+
+### Hair Diseases dataset (1.00 acc)
+![Hair Diseases](conf_matrices/pretrained_hair_diseases.png)
+
 
