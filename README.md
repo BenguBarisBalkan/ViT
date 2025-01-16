@@ -19,6 +19,7 @@ model = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224',
 model.load_state_dict(torch.load('model.pth')) # for .pth models
 model.eval()  # Set the model to evaluation mode
 ```
+pretrained models are not available on github since they are bigger than 100mb. Please contact me if you want to use them.
 
 
 ## From the scratch models' results on different datasets
